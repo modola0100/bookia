@@ -1,3 +1,3 @@
 class AppFonts {
-  static const String dMSerifDisplay = "DMSerifDisplay";
+  static const String dmSerifFamily = 'DMSerifDisplay';
 }

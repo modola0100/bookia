@@ -1,39 +1,34 @@
-import 'package:bookia/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class customTextformfield extends StatelessWidget {
-  customTextformfield({
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
     super.key,
-    this.hintText,
+    this.hint,
     this.validator,
+    this.maxLines = 1,
+    this.suffixIcon,
+    this.readOnly = false,
+    this.onTap,
     required this.controller,
-    this.maxlines = 1,
-    this.icon,
-    this.ontap,
-    this.readonly = false,
   });
-  final String? hintText;
+
+  final String? hint;
+  final int maxLines;
   final String? Function(String?)? validator;
   final TextEditingController controller;
-  int maxlines;
-  final Widget? icon;
-  Function()? ontap;
-  bool readonly;
+  final Widget? suffixIcon;
+  final bool readOnly;
+  final Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      readOnly: readonly,
-      onTap: ontap,
-      maxLines: maxlines,
       controller: controller,
       validator: validator,
-      decoration: InputDecoration(
-        hintText: hintText,
-        suffixIcon: icon,
-        filled: true,
-        fillColor: AppColors.grayinputColor,
-      ),
+      readOnly: readOnly,
+      maxLines: maxLines,
+      onTap: onTap,
+      decoration: InputDecoration(hintText: hint, suffixIcon: suffixIcon),
     );
   }
 }

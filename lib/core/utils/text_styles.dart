@@ -1,49 +1,51 @@
-
 import 'package:flutter/material.dart';
 
 class TextStyles {
-  static TextStyle size30({
+  static TextStyle styleSize30({
     Color? color,
     double fontSize = 30,
-    FontWeight fontweight = FontWeight.normal,
+    FontWeight fontWeight = FontWeight.normal,
   }) {
-    return TextStyle(
-      color: color,
-      fontSize: fontSize,
-      fontWeight:fontweight,
-    );
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
-  static TextStyle size18({
-    Color? color,
-    double fontSize = 18,
-    FontWeight fontweight = FontWeight.normal,
-  }) {
-    return TextStyle(
-      color: color,
-      fontSize: fontSize,
-      fontWeight:fontweight,
-    );
-  }
-  static TextStyle size15({
-    Color? color,
-    double fontSize = 15,
-    FontWeight fontweight = FontWeight.normal,
-  }) {
-    return TextStyle(
-      color: color,
-      fontSize: fontSize,
-      fontWeight:fontweight,
-    );
-  }
-  static TextStyle size24({
+
+  static TextStyle styleSize24({
     Color? color,
     double fontSize = 24,
-    FontWeight fontweight = FontWeight.normal,
+    FontWeight fontWeight = FontWeight.normal,
   }) {
-    return TextStyle(
-      color: color,
-      fontSize: fontSize,
-      fontWeight:fontweight,
-    );
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+  }
+
+  static TextStyle styleSize20({
+    Color? color,
+    double fontSize = 20,
+    FontWeight fontWeight = FontWeight.normal,
+  }) {
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+  }
+
+  static TextStyle styleSize18({
+    Color? color,
+    double fontSize = 18,
+    FontWeight fontWeight = FontWeight.normal,
+  }) {
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+  }
+
+  static TextStyle styleSize16({
+    Color? color,
+    double fontSize = 16,
+    FontWeight fontWeight = FontWeight.normal,
+  }) {
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+  }
+
+  static TextStyle styleSize14({
+    Color? color,
+    double fontSize = 14,
+    FontWeight fontWeight = FontWeight.normal,
+  }) {
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
 }
