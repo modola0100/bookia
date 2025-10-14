@@ -1,51 +1,35 @@
 import 'package:flutter/material.dart';
 
 class TextStyles {
-  static TextStyle styleSize30({
+  static TextStyle size30({
     Color? color,
     double fontSize = 30,
-    FontWeight fontWeight = FontWeight.normal,
+    FontWeight fontweight = FontWeight.normal,
   }) {
-    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontweight);
   }
 
-  static TextStyle styleSize24({
-    Color? color,
-    double fontSize = 24,
-    FontWeight fontWeight = FontWeight.normal,
-  }) {
-    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
-  }
-
-  static TextStyle styleSize20({
-    Color? color,
-    double fontSize = 20,
-    FontWeight fontWeight = FontWeight.normal,
-  }) {
-    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
-  }
-
-  static TextStyle styleSize18({
+  static TextStyle size18({
     Color? color,
     double fontSize = 18,
-    FontWeight fontWeight = FontWeight.normal,
+    FontWeight fontweight = FontWeight.normal,
   }) {
-    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontweight);
   }
 
-  static TextStyle styleSize16({
+  static TextStyle size15({
     Color? color,
-    double fontSize = 16,
-    FontWeight fontWeight = FontWeight.normal,
+    double fontSize = 15,
+    FontWeight fontweight = FontWeight.normal,
   }) {
-    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontweight);
   }
 
-  static TextStyle styleSize14({
+  static TextStyle size24({
     Color? color,
-    double fontSize = 14,
-    FontWeight fontWeight = FontWeight.normal,
+    double fontSize = 24,
+    FontWeight fontweight = FontWeight.normal,
   }) {
-    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontweight);
   }
 }

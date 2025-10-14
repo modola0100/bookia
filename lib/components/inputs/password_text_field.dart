@@ -1,54 +1,53 @@
-import 'package:bookia/core/constants/app_images.dart';
+import 'package:bookia/core/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
+// ignore: must_be_immutable
 class PasswordTextField extends StatefulWidget {
-  const PasswordTextField({
+  PasswordTextField({
     super.key,
-    this.hint,
+    this.hintText,
     this.validator,
-    this.maxLines = 1,
-    this.readOnly = false,
-    this.onTap,
     required this.controller,
+    this.maxlines = 1,
+    this.icon,
+    this.ontap,
+    this.readonly = false,
   });
-
-  final String? hint;
-  final int maxLines;
+  final String? hintText;
   final String? Function(String?)? validator;
   final TextEditingController controller;
-  final bool readOnly;
-  final Function()? onTap;
+  int maxlines;
+  final Widget? icon;
+  Function()? ontap;
+  bool readonly;
 
   @override
-  State<PasswordTextField> createState() => _PasswordTextFieldState();
+  State<PasswordTextField> createState() => _customTextformfieldState();
 }
 
-class _PasswordTextFieldState extends State<PasswordTextField> {
-  bool _obscureText = true;
+class _customTextformfieldState extends State<PasswordTextField> {
+  bool obsecureText = true;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obsecureText,
+      readOnly: widget.readonly,
+      onTap: widget.ontap,
+      maxLines: widget.maxlines,
       controller: widget.controller,
-      obscureText: _obscureText,
       validator: widget.validator,
-      readOnly: widget.readOnly,
-      maxLines: widget.maxLines,
-      onTap: widget.onTap,
       decoration: InputDecoration(
-        hintText: widget.hint,
+        hintText: widget.hintText,
         suffixIcon: GestureDetector(
           onTap: () {
             setState(() {
-              _obscureText = !_obscureText;
+              obsecureText = !obsecureText;
             });
           },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [SvgPicture.asset(AppImages.eyeSvg)],
-          ),
+          child: widget.icon,
         ),
+        filled: true,
+        fillColor: AppColors.grayinputColor,
       ),
     );
   }
