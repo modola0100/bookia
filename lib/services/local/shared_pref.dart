@@ -7,6 +7,7 @@ class SharedPref {
   static late SharedPreferences pref;
   static String userData = "userData";
   static String Wishlist = "Wishlist";
+  static String Cart = "Cart";
   static init() async {
     pref = await SharedPreferences.getInstance();
   }
@@ -33,6 +34,23 @@ class SharedPref {
 
   static List<int>? getWishlist() {
     List<String>? listofStrings = getData(Wishlist);
+
+    if (listofStrings == null) return null;
+    List<int>? listOfints = [];
+    for (var id in listofStrings) {
+      listOfints.add(int.tryParse(id) ?? 0);
+    }
+    return listOfints;
+  }
+
+
+  static saveCart(List<int> CartIds) {
+    List<String> intToString = CartIds.map((id) => id.toString()).toList();
+    saveData(Cart, intToString);
+  }
+
+  static List<int>? getCart() {
+    List<String>? listofStrings = getData(Cart);
 
     if (listofStrings == null) return null;
     List<int>? listOfints = [];

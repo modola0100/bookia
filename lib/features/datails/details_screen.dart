@@ -124,7 +124,9 @@ class DetailsScreen extends StatelessWidget {
                   Expanded(
                     child: customButtom(
                       txt: "Add To Cart",
-                      onPressed: () {},
+                      onPressed: () {
+                        cubit.addToCart(productId: book.id ?? 0);
+                      },
                       height: 60,
                       color: AppColors.buybuttomColor,
                     ),

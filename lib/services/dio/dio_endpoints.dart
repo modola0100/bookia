@@ -18,4 +18,10 @@ class DioEndpoints {
   //Search
   static const String allProducts = "/products";
   static const String searchProducts = "/products-search";
+
+  //Cart
+  static const String showCart = "/cart";
+  static const String addToCart = "/add-to-cart";
+  static const String updateCart = "/update-cart";
+  static const String removeFromCart = "/remove-from-cart";
 }

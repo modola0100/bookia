@@ -55,8 +55,7 @@ class SearchProductModel {
     };
   }
 
-
-    Product mapToProduct() {
+  Product mapToProduct() {
     return Product(
       id: id,
       name: name,

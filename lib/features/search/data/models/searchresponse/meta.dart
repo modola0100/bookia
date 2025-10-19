@@ -6,9 +6,7 @@ class Meta {
 
   Meta({this.total, this.perPage, this.currentPage, this.lastPage});
 
-  factory Meta.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory Meta.fromJson(Map<String, dynamic> json) {
     return Meta(
       total: json['total'] as int?,
       perPage: json['per_page'] as int?,
@@ -17,8 +15,7 @@ class Meta {
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'total': total,
       'per_page': perPage,

@@ -1,6 +1,6 @@
 import 'package:bookia/core/constants/app_icons.dart';
 import 'package:bookia/core/utils/colors.dart';
-import 'package:bookia/features/cart/cart_screen.dart';
+import 'package:bookia/features/cart/presentation/cart_screen.dart';
 import 'package:bookia/features/home/presentation/home_screen.dart';
 import 'package:bookia/features/profile/profile_screen.dart';
 import 'package:bookia/features/wishlist/presentation/wishlist_screen.dart';

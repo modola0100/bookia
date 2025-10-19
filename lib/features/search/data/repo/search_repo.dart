@@ -19,11 +19,13 @@ class SearchRepo {
       return null;
     }
   }
+
   static Future<Searchresponse?> searchProducts({required String name}) async {
     try {
-      var res = await DioProvider.get(path: DioEndpoints.searchProducts , queryParameters: {
-        "name" : name
-      });
+      var res = await DioProvider.get(
+        path: DioEndpoints.searchProducts,
+        queryParameters: {"name": name},
+      );
 
       if (res.statusCode == 200) {
         return Searchresponse.fromJson(res.data);

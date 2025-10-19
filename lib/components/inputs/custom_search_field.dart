@@ -2,9 +2,13 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class customSearchfield extends StatelessWidget {
-  const customSearchfield({super.key, required this.controller, this.onChanged});
-    final TextEditingController controller;
-    final Function(String)? onChanged;
+  const customSearchfield({
+    super.key,
+    required this.controller,
+    this.onChanged,
+  });
+  final TextEditingController controller;
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(

@@ -6,9 +6,7 @@ class Links {
 
   Links({this.first, this.last, this.prev, this.next});
 
-  factory Links.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory Links.fromJson(Map<String, dynamic> json) {
     return Links(
       first: json['first'] as String?,
       last: json['last'] as String?,
@@ -17,8 +15,7 @@ class Links {
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {'first': first, 'last': last, 'prev': prev, 'next': next};
   }
 }

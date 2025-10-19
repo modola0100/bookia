@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
+// ignore: must_be_immutable
 class customSocialButtom extends StatelessWidget {
   customSocialButtom({
     super.key,

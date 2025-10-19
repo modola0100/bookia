@@ -45,7 +45,9 @@ class SearchScreen extends StatelessWidget {
                       if (state is! SearchSucessState) {
                         return SizedBox(
                           height: MediaQuery.of(context).size.height * 0.6,
-                          child: const Center(child: CircularProgressIndicator()),
+                          child: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
                         );
                       }
                       final list = cubit.SearchController.text.isEmpty
@@ -73,7 +75,6 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
         ),
-        
       ),
     );
   }

@@ -1,6 +1,6 @@
 {
-    "name": "book",
-    "short_name": "book",
+    "name": "bookia",
+    "short_name": "bookia",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
