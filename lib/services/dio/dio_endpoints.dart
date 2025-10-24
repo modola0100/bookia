@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class DioEndpoints {
   static const String baseUrl = "https://codingarabic.online/api";
 
@@ -24,4 +26,6 @@ class DioEndpoints {
   static const String addToCart = "/add-to-cart";
   static const String updateCart = "/update-cart";
   static const String removeFromCart = "/remove-from-cart";
+  static const String place_order = "/place-order";
+  static const String governorates = "/governorates";
 }

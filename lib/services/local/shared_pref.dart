@@ -43,7 +43,15 @@ class SharedPref {
     return listOfints;
   }
 
-
+  /*************  ✨ Windsurf Command ⭐  *************/
+  /// Save CartIds to SharedPreferences
+  ///
+  /// [CartIds] List of CartIds to be saved
+  ///
+  /// This function saves the CartIds to SharedPreferences
+  /// with the key [Cart].
+  ///
+  /*******  08d8908e-7fda-45a7-a2dd-b12270a11bdc  *******/
   static saveCart(List<int> CartIds) {
     List<String> intToString = CartIds.map((id) => id.toString()).toList();
     saveData(Cart, intToString);

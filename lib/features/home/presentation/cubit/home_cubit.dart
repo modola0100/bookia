@@ -6,7 +6,9 @@ import 'package:bookia/features/home/data/models/sliders_response/sliders_respon
 import 'package:bookia/features/home/data/repo/home_repo.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
 import 'package:bookia/features/wishlist/data/repo/wishlist_repo.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
 import 'package:bookia/services/local/shared_pref.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -37,7 +39,7 @@ class HomeCubit extends Cubit<HomeState> {
     if (checkifWishlist(productId)) {
       var res = await WishlistRepo.removeFromtWishlist(productId: productId);
       if (res != null) {
-        emit(HomeSucessState(message: "Removed From Wishlist"));
+        emit(HomeSucessState(message: LocaleKeys.removed_from_wishlist.tr()));
       } else {
         emit(HomeErrorState());
       }
@@ -45,7 +47,7 @@ class HomeCubit extends Cubit<HomeState> {
       var res = await WishlistRepo.addToWishlist(productId: productId);
 
       if (res != null) {
-        emit(HomeSucessState(message: "Added To Wishlist"));
+        emit(HomeSucessState(message: LocaleKeys.added_to_wishlist.tr()));
       } else {
         emit(HomeErrorState());
       }
@@ -56,7 +58,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoadingState());
     var res = await CartRepo.addToCart(productId: productId);
     if (res != null) {
-      emit(HomeSucessState(message: "Added To Cart"));
+      emit(HomeSucessState(message: LocaleKeys.added_to_cart.tr()));
     } else {
       emit(HomeErrorState());
     }
@@ -67,6 +69,7 @@ class HomeCubit extends Cubit<HomeState> {
 
     return cachedWishlist?.contains(productId) ?? false;
   }
+
   bool checkifCart(int productId) {
     var cachedCart = SharedPref.getCart();
 

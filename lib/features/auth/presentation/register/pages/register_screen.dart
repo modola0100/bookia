@@ -12,6 +12,8 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/auth/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/cubit/auth_state.dart';
 import 'package:bookia/features/auth/presentation/register/widgets/register_bottom_navbar.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,17 +60,14 @@ class RegisterScreen extends StatelessWidget {
           key: cubit.formkey,
           child: Column(
             children: [
-              Text(
-                "Hello! Register to get started",
-                style: TextStyles.size30(),
-              ),
+              Text(LocaleKeys.register_header.tr(), style: TextStyles.size30()),
               Gap(30),
               customTextformfield(
                 controller: cubit.userNameController,
-                hintText: "Username",
+                hintText: LocaleKeys.username.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Username is Required";
+                    return LocaleKeys.username_validate.tr();
                   }
                   return null;
                 },
@@ -76,10 +75,10 @@ class RegisterScreen extends StatelessWidget {
               Gap(15),
               customTextformfield(
                 controller: cubit.emailController,
-                hintText: "email",
+                hintText: LocaleKeys.no_email.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Email is Required";
+                    return LocaleKeys.email_validate.tr();
                   }
                   return null;
                 },
@@ -87,10 +86,10 @@ class RegisterScreen extends StatelessWidget {
               Gap(15),
               PasswordTextField(
                 controller: cubit.passwordController,
-                hintText: "Enter your password",
+                hintText: LocaleKeys.password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Password is Required";
+                    return LocaleKeys.password_validate.tr();
                   }
                   return null;
                 },
@@ -99,7 +98,7 @@ class RegisterScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: SvgPicture.asset(AppIcons.eyeSvg),
                     ),
                   ],
@@ -108,10 +107,10 @@ class RegisterScreen extends StatelessWidget {
               Gap(15),
               PasswordTextField(
                 controller: cubit.confirmpasswordController,
-                hintText: "Confirm Password",
+                hintText: LocaleKeys.con_password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Confirm Password is Required";
+                    return LocaleKeys.con_password_validate.tr();
                   }
                   return null;
                 },
@@ -120,7 +119,7 @@ class RegisterScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: SvgPicture.asset(AppIcons.eyeSvg),
                     ),
                   ],
@@ -128,7 +127,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               Gap(30),
               customButtom(
-                txt: "Register",
+                txt: LocaleKeys.register.tr(),
                 onPressed: () {
                   if (cubit.formkey.currentState!.validate()) {
                     cubit.register();

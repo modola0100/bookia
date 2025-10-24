@@ -73,6 +73,10 @@ class WishlistRepo {
     }
   }
 
+  /// Save the wishlist to the SharedPreferences.
+  /// If the list is empty, it saves an empty list.
+  /// Otherwise, it iterates over the list, adds the id of each Datum
+  /// to a list of integers and saves that list to the SharedPreferences.
   static saveWishlistToLocal(List<Datum> wihlistIds) {
     if (wihlistIds.isEmpty) {
       SharedPref.saveWishlist([]);

@@ -3,6 +3,8 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:bookia/features/wishlist/presentation/cubit/wishlist_state.dart';
 import 'package:bookia/features/wishlist/presentation/widgets/wishlist_card.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -16,7 +18,7 @@ class WishlistScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => WishListCubit()..getWishlist(),
       child: Scaffold(
-        appBar: AppBar(title: Text("WishList")),
+        appBar: AppBar(title: Text(LocaleKeys.wishlist.tr())),
         body: BlocBuilder<WishListCubit, WishListState>(
           builder: (context, state) {
             var cubit = context.read<WishListCubit>();
@@ -31,7 +33,7 @@ class WishlistScreen extends StatelessWidget {
                     Lottie.asset(AppImages.nobooks, width: 180, height: 180),
                     Gap(10),
                     Text(
-                      "No Books Added To Wishlist",
+                      LocaleKeys.no_wishlist_books.tr(),
                       style: TextStyles.size18(),
                     ),
                   ],

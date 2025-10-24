@@ -44,7 +44,7 @@ class customSocialButtom extends StatelessWidget {
               SvgPicture.asset(socialLogo),
               Gap(15),
               Text(
-                "Sign in with $txt",
+                "$txt",
                 style: TextStyles.size15(color: AppColors.darkGrayColor),
               ),
             ],

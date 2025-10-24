@@ -7,3 +7,6 @@ class CartLoadingState extends CartState {}
 class CartSucessState extends CartState {}
 
 class CartErrorState extends CartState {}
+
+class CartGovernmentsLoadedState extends CartState {}
+

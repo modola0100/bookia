@@ -25,9 +25,7 @@ class CartItem {
     this.itemTotal,
   });
 
-  factory CartItem.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory CartItem.fromJson(Map<String, dynamic> json) {
     return CartItem(
       itemId: json['item_id'] as int?,
       itemProductId: json['item_product_id'] as int?,
@@ -43,8 +41,7 @@ class CartItem {
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'item_id': itemId,
       'item_product_id': itemProductId,
@@ -59,14 +56,13 @@ class CartItem {
     };
   }
 
-
-    Product mapToProduct() {
+  Product mapToProduct() {
     return Product(
       id: itemProductId,
       name: itemProductName,
       image: itemProductImage,
       price: itemProductPrice,
-      priceAfterDiscount:itemProductPriceAfterDiscount,
+      priceAfterDiscount: itemProductPriceAfterDiscount,
       discount: itemProductDiscount,
       stock: itemProductStock,
     );

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bookia/features/cart/data/models/cart_response/cart_item.dart';
 import 'package:bookia/features/cart/data/models/cart_response/cart_response.dart';
+import 'package:bookia/features/cart/data/models/government_response/government_response.dart';
 import 'package:bookia/services/dio/dio_endpoints.dart';
 import 'package:bookia/services/dio/dio_provider.dart';
 import 'package:bookia/services/local/shared_pref.dart';
@@ -81,6 +82,55 @@ class CartRepo {
       if (res.statusCode == 201) {
         var data = CartResponse.fromJson(res.data);
         saveCartToLocal(data.data?.cartItems ?? []);
+        return data;
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static Future<CartResponse?> placeOrder({
+    required int govId,
+    required String name,
+    required String phone,
+    required String government,
+    required String email,
+  }) async {
+    try {
+      var res = await DioProvider.post(
+        endPoint: DioEndpoints.place_order,
+        headers: {"Authorization": "Bearer ${SharedPref.getUserData()?.token}"},
+        data: {
+          "governorate_id": govId,
+          "name": name,
+          "phone": phone,
+          "address": government,
+          "email": email,
+        },
+      );
+
+      if (res.statusCode == 201) {
+        var data = CartResponse.fromJson(res.data);
+        saveCartToLocal(data.data?.cartItems ?? []);
+        return data;
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static Future<GovernmentResponse?> getGovernments() async {
+    try {
+      var res = await DioProvider.get(path: DioEndpoints.governorates);
+
+      if (res.statusCode == 200) {
+        var data = GovernmentResponse.fromJson(res.data);
         return data;
       } else {
         return null;

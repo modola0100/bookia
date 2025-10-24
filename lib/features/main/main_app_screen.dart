@@ -8,34 +8,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainAppScreen extends StatefulWidget {
-  const MainAppScreen({super.key});
+  final int initialIndex;
+  const MainAppScreen({super.key, this.initialIndex = 0});
 
   @override
   State<MainAppScreen> createState() => _MainAppScreenState();
 }
 
 class _MainAppScreenState extends State<MainAppScreen> {
+  late int currentIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex; // ← هنا بناخد القيمة اللي جاية من extra
+  }
+
   List<Widget> screens = [
     HomeScreen(),
     WishlistScreen(),
     CartScreen(),
     ProfileScreen(),
   ];
-  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_currentIndex],
+      body: screens[currentIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: BottomNavigationBar(
-          currentIndex: _currentIndex,
+          currentIndex: currentIndex,
           onTap: (index) {
             setState(() {
-              _currentIndex = index;
+              currentIndex = index;
             });
           },
           type: BottomNavigationBarType.fixed,
@@ -48,7 +57,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
               icon: SvgPicture.asset(
                 AppIcons.homeSvg,
                 colorFilter: ColorFilter.mode(
-                  _currentIndex == 0
+                  currentIndex == 0
                       ? AppColors.primaryColor
                       : AppColors.darkColor,
                   BlendMode.srcIn,
@@ -60,7 +69,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
               icon: SvgPicture.asset(
                 AppIcons.wishlistSvg,
                 colorFilter: ColorFilter.mode(
-                  _currentIndex == 1
+                  currentIndex == 1
                       ? AppColors.primaryColor
                       : AppColors.darkColor,
                   BlendMode.srcIn,
@@ -72,7 +81,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
               icon: SvgPicture.asset(
                 AppIcons.cartSvg,
                 colorFilter: ColorFilter.mode(
-                  _currentIndex == 2
+                  currentIndex == 2
                       ? AppColors.primaryColor
                       : AppColors.darkColor,
                   BlendMode.srcIn,
@@ -84,7 +93,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
               icon: SvgPicture.asset(
                 AppIcons.profileSvg,
                 colorFilter: ColorFilter.mode(
-                  _currentIndex == 3
+                  currentIndex == 3
                       ? AppColors.primaryColor
                       : AppColors.darkColor,
                   BlendMode.srcIn,

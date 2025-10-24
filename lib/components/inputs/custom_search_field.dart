@@ -1,4 +1,6 @@
 import 'package:bookia/core/utils/colors.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class customSearchfield extends StatelessWidget {
@@ -26,7 +28,7 @@ class customSearchfield extends StatelessWidget {
         prefixIcon: Icon(Icons.search, color: AppColors.darkColor, size: 30),
         filled: true,
         fillColor: AppColors.searchFieldColor,
-        hintText: "Search Store",
+        hintText: LocaleKeys.search.tr(),
         hintStyle: TextStyle(
           fontFamily: "Poppins",
           fontSize: 14,

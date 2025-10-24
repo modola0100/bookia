@@ -8,7 +8,9 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/home/data/models/best_seller_response/product.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +51,7 @@ class DetailsScreen extends StatelessWidget {
             centerTitle: false,
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: GestureDetector(
                   onTap: () {
                     cubit.addRemoveToWishlist(productId: book.id ?? 0);
@@ -123,7 +125,7 @@ class DetailsScreen extends StatelessWidget {
                   Gap(40),
                   Expanded(
                     child: customButtom(
-                      txt: "Add To Cart",
+                      txt: LocaleKeys.add_to_cart.tr(),
                       onPressed: () {
                         cubit.addToCart(productId: book.id ?? 0);
                       },

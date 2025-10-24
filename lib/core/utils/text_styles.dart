@@ -8,6 +8,13 @@ class TextStyles {
   }) {
     return TextStyle(color: color, fontSize: fontSize, fontWeight: fontweight);
   }
+  static TextStyle size36({
+    Color? color,
+    double fontSize = 36,
+    FontWeight fontweight = FontWeight.normal,
+  }) {
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontweight);
+  }
 
   static TextStyle size18({
     Color? color,

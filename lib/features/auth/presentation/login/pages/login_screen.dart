@@ -15,6 +15,8 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/auth/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/cubit/auth_state.dart';
 import 'package:bookia/features/auth/presentation/login/widgets/login_bottom_navbar.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,17 +63,14 @@ class LoginScreen extends StatelessWidget {
           key: cubit.formkey,
           child: Column(
             children: [
-              Text(
-                "Welcome back! Glad to see you, Again!",
-                style: TextStyles.size30(),
-              ),
+              Text(LocaleKeys.login_header.tr(), style: TextStyles.size30()),
               Gap(30),
               customTextformfield(
                 controller: cubit.emailController,
-                hintText: "Enter your email",
+                hintText: LocaleKeys.email.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Email is Required";
+                    return LocaleKeys.email_validate.tr();
                   }
                   return null;
                 },
@@ -79,10 +78,10 @@ class LoginScreen extends StatelessWidget {
               Gap(15),
               PasswordTextField(
                 controller: cubit.passwordController,
-                hintText: "Enter your password",
+                hintText: LocaleKeys.password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Password is Required";
+                    return LocaleKeys.password_validate.tr();
                   }
                   return null;
                 },
@@ -91,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: SvgPicture.asset(AppIcons.eyeSvg),
                     ),
                   ],
@@ -105,14 +104,14 @@ class LoginScreen extends StatelessWidget {
                     pushTo(context, Routes.forget_password);
                   },
                   child: Text(
-                    "Forgot Password?",
+                    LocaleKeys.forget_password.tr(),
                     style: TextStyles.size15(color: AppColors.darkGrayColor),
                   ),
                 ),
               ),
               Gap(30),
               customButtom(
-                txt: "Login",
+                txt: LocaleKeys.login.tr(),
                 onPressed: () {
                   if (cubit.formkey.currentState!.validate()) {
                     cubit.login();
@@ -124,20 +123,20 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Expanded(child: Divider()),
                   Gap(10),
-                  Text("OR"),
+                  Text(LocaleKeys.or.tr()),
                   Gap(10),
                   Expanded(child: Divider()),
                 ],
               ),
               Gap(30),
               customSocialButtom(
-                txt: "Google",
+                txt: LocaleKeys.google.tr(),
                 onPressed: () {},
                 socialLogo: AppImages.googleSvg,
               ),
               Gap(15),
               customSocialButtom(
-                txt: "Apple",
+                txt: LocaleKeys.apple.tr(),
                 onPressed: () {},
                 socialLogo: AppImages.appleSvg,
               ),

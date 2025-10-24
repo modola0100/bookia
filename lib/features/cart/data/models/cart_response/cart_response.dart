@@ -8,26 +8,20 @@ class CartResponse {
 
   CartResponse({this.data, this.message, this.error, this.status});
 
-  factory CartResponse.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory CartResponse.fromJson(Map<String, dynamic> json) {
     return CartResponse(
       data: json['data'] == null
           ? null
-          : Data.fromJson(
-              json['data'] as Map<String, dynamic>,
-            ),
+          : Data.fromJson(json['data'] as Map<String, dynamic>),
       message: json['message'] as String?,
       error: json['error'] as List<dynamic>?,
       status: json['status'] as int?,
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
-      'data': data
-          ?.toJson(),
+      'data': data?.toJson(),
       'message': message,
       'error': error,
       'status': status,
