@@ -3,8 +3,9 @@ class AuthParams {
   String? email;
   String? password;
   String? confirmpassword;
+  int? otp;
 
-  AuthParams({this.name, this.email, this.password, this.confirmpassword});
+  AuthParams({this.name, this.email, this.password, this.confirmpassword , this.otp});
 
   factory AuthParams.fromJson(Map<String, dynamic> json) {
     return AuthParams(
@@ -12,6 +13,7 @@ class AuthParams {
       email: json["email"],
       password: json["password"],
       confirmpassword: json["password_confirmation"],
+      otp: json["verify_code"]
     );
   }
 
@@ -21,6 +23,7 @@ class AuthParams {
       "email": email,
       "password": password,
       "password_confirmation": confirmpassword,
+      "verify_code" : otp
     };
   }
 }

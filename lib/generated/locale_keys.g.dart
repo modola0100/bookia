@@ -24,6 +24,22 @@ abstract class LocaleKeys {
   static const apple = 'apple';
   static const no_account = 'no_account';
   static const have_account = 'have_account';
+  static const fogot_password = 'fogot_password';
+  static const fogot_password_msg = 'fogot_password_msg';
+  static const send_code = 'send_code';
+  static const otp = 'otp';
+  static const otp_msg = 'otp_msg';
+  static const verify = 'verify';
+  static const creat_new_password = 'creat_new_password';
+  static const creat_new_password_msg = 'creat_new_password_msg';
+  static const new_password = 'new_password';
+  static const new_password_validate = 'new_password_validate';
+  static const confirm_new_password = 'confirm_new_password';
+  static const confirm_new_password_validate = 'confirm_new_password_validate';
+  static const reset_password = 'reset_password';
+  static const password_changed = 'password_changed';
+  static const password_changed_msg = 'password_changed_msg';
+  static const back_to_login = 'back_to_login';
 
   //Home
   static const home = 'home';
@@ -58,4 +74,13 @@ abstract class LocaleKeys {
 
   //Search
   static const search = "search";
+
+
+  // Profile
+  static const profile = "profile";
+  static const my_orders = "my_orders";
+  static const edit_profile = "edit_profile";
+  static const faq = "faq";
+  static const contact_us = "contact_us";
+  static const privacy = "privacy";
 }

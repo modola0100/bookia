@@ -1,5 +1,6 @@
 import 'package:bookia/features/auth/cubit/auth_state.dart';
 import 'package:bookia/features/auth/data/models/auth_params.dart';
+import 'package:bookia/features/auth/data/models/new_password_params.dart';
 import 'package:bookia/features/auth/data/repo/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,6 +52,16 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthErrorState());
     }
   }
+  logout() async {
+    emit(AuthLoadingState());
+    var res = await AuthRepo.logout();
+
+    if (res != null) {
+      emit(AuthSucessState());
+    } else {
+      emit(AuthErrorState());
+    }
+  }
 
   forget_password() async {
     emit(AuthLoadingState());
@@ -65,12 +76,36 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  verify_email() async {
+  Otp() async {
     emit(AuthLoadingState());
-    var res = await AuthRepo.verify_email(
-      AuthParams(email: emailController.text),
+    var res = await AuthRepo.Otp(
+      AuthParams(
+        email: emailController.text,
+        otp: int.parse(
+          (otpController1.text +
+              otpController2.text +
+              otpController3.text +
+              otpController4.text +
+              otpController5.text +
+              otpController6.text),
+        ),
+      ),
     );
-
+    if (res != null) {
+      emit(AuthSucessState());
+    } else {
+      emit(AuthErrorState());
+    }
+  }
+  resetpassword(int otp) async {
+    emit(AuthLoadingState());
+    var res = await AuthRepo.reset_password(
+      NewPasswordParams(
+        otp: otp,
+        password: passwordController.text,
+        confirmpassword: confirmpasswordController.text
+      ),
+    );
     if (res != null) {
       emit(AuthSucessState());
     } else {

@@ -1,9 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:developer';
+
 import 'package:bookia/features/auth/cubit/auth_cubit.dart';
+import 'package:bookia/features/auth/presentation/create_new_password/pages/create_new_password_screen.dart';
 import 'package:bookia/features/auth/presentation/forget_password/pages/forget_password_screen.dart';
 import 'package:bookia/features/auth/presentation/login/pages/login_screen.dart';
 import 'package:bookia/features/auth/presentation/otp/pages/otp_screen.dart';
+import 'package:bookia/features/auth/presentation/password_changed/pages/password_changed_screen.dart';
 import 'package:bookia/features/auth/presentation/register/pages/register_screen.dart';
 import 'package:bookia/features/cart/place_order_screen.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_cubit.dart';
@@ -28,6 +32,8 @@ class Routes {
   static String details = "/details";
   static String forget_password = "/forget_password";
   static String otp = "/otp";
+  static String createNewPassword = "/create_new_password";
+  static String NewPasswordSuccess = "/new_password_success";
   static String search = "/search";
   static String place_order = "/place_order";
   static String success = "/success";
@@ -38,8 +44,33 @@ class Routes {
       GoRoute(path: welcome, builder: (context, state) => WelcomeScreen()),
       GoRoute(
         path: otp,
-        builder: (context, state) =>
-            BlocProvider(create: (context) => AuthCubit(), child: OtpScreen()),
+        builder: (context, state) {
+          final email = state.extra as String? ?? "";
+          return BlocProvider(
+            create: (context) => AuthCubit(),
+            child: OtpScreen(email: email),
+          );
+        },
+      ),
+      GoRoute(
+        path: createNewPassword,
+        builder: (context, state) {
+          final otp = state.extra as int? ?? 0;
+          log("🚀 OTP Received in Route: $otp");
+          return BlocProvider(
+            create: (context) => AuthCubit(),
+            child: CreateNewPasswordScreen(Otp: otp),
+          );
+        },
+      ),
+      GoRoute(
+        path: NewPasswordSuccess,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => AuthCubit(),
+            child: PasswordChangedScreen(),
+          );
+        },
       ),
       GoRoute(
         path: forget_password,
@@ -62,16 +93,16 @@ class Routes {
           child: RegisterScreen(),
         ),
       ),
-GoRoute(
-  path: Routes.main,
-  builder: (context, state) {
-    final initialIndex = state.extra as int? ?? 0;
-    return MainAppScreen(
-      key: UniqueKey(), // ✅ دا بيفرض إعادة بناء كاملة
-      initialIndex: initialIndex,
-    );
-  },
-),
+      GoRoute(
+        path: Routes.main,
+        builder: (context, state) {
+          final initialIndex = state.extra as int? ?? 0;
+          return MainAppScreen(
+            key: UniqueKey(), // ✅ دا بيفرض إعادة بناء كاملة
+            initialIndex: initialIndex,
+          );
+        },
+      ),
 
       GoRoute(
         path: details,

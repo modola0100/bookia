@@ -6,6 +6,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'; // أضف هذا السطر
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,10 +17,10 @@ void main() async {
     DevicePreview(
       enabled: !kDebugMode,
       builder: (context) => EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('ar')],
-        startLocale: Locale("ar"),
-        path: 'assets/translation',
-        fallbackLocale: Locale("en"),
+        supportedLocales: const [Locale('en'), Locale('ar')],
+        startLocale: const Locale("ar"),
+        path: 'assets/translations', // تأكد من أن هذا المسار صحيح
+        fallbackLocale: const Locale("en"),
         child: const MainApp(),
       ),
     ),

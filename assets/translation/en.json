@@ -21,6 +21,22 @@
     "apple" : "Sign in with Apple",
     "no_account" : "Don’t have an account?  ",
     "have_account" : "Already have an account?  ",
+        "fogot_password" : "Fogot Password?",
+    "fogot_password_msg" : "Don't worry! It occurs. Please enter the email address linked with your account.",
+    "send_code" : "Send Code",
+    "otp" : "OTP Verification",
+    "otp_msg" : "Enter the verification code we just sent on your email address.",
+    "verify" : "Verify",
+       "creat_new_password" : "Create New Password",
+   "creat_new_password_msg" : "Your new password must be unique from those previously used.",
+   "new_password" : "New Password",
+   "new_password_validate" : "New Password is Required",
+   "confirm_new_password" : "Confirm New Password",
+   "confirm_new_password_validate" : "Confirm New Password is Required",
+   "reset_password" : "Reset Password",
+      "password_changed" : "Password Changed",
+   "password_changed_msg" : "Your password has been changed successfully.",
+   "back_to_login" : "Back To Login",
 
 
     "wishlist" : "Wishlist",
@@ -47,5 +63,13 @@
     "success_mes" : "Your order will be delivered soon.\nThank you for choosing our app!",
     "back_to_home" : "Back To Home",
 
-    "search" : "Search Store"
+    "search" : "Search Store",
+
+    "profile" : "Profile",
+    "my_orders" : "My Orders",
+    "edit_profile" : "edit Profile",
+    "faq" : "FAQ",
+    "contact_us" : "Contact Us",
+    "privacy" : "Privacy & Terms"
+
 }

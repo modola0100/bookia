@@ -11,14 +11,16 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/auth/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/cubit/auth_state.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
-
+  const OtpScreen({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +46,22 @@ Widget _buildotppasswordbody(BuildContext context) {
       if (state is AuthLoadingState) {
         showloadingDialog(context);
       } else if (state is AuthSucessState) {
+        pop(context);
         log("Success");
-        pushTo(context, Routes.otp);
+            final otpCode = int.parse(
+        cubit.otpController1.text +
+            cubit.otpController2.text +
+            cubit.otpController3.text +
+            cubit.otpController4.text +
+            cubit.otpController5.text +
+            cubit.otpController6.text,
+      );
+      log("🚀 Sending OTP: ${cubit.otpController1.text}${cubit.otpController2.text}${cubit.otpController3.text}${cubit.otpController4.text}${cubit.otpController5.text}${cubit.otpController6.text}");
+        pushTo(
+          context,
+          Routes.createNewPassword,
+          extra: otpCode
+        );
       } else {
         pop(context);
         showSnakBar(context, AppColors.redColor, "Field");
@@ -58,10 +74,10 @@ Widget _buildotppasswordbody(BuildContext context) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("OTP Verification", style: TextStyles.size30()),
+            Text(LocaleKeys.otp.tr(), style: TextStyles.size30()),
             Gap(10),
             Text(
-              "Enter the verification code we just sent on your email address.",
+              LocaleKeys.otp_msg.tr(),
               style: TextStyles.size15(color: AppColors.graytextColor),
             ),
             Gap(30),
@@ -150,10 +166,10 @@ Widget _buildotppasswordbody(BuildContext context) {
             ),
             Gap(40),
             customButtom(
-              txt: "Send Code",
+              txt: LocaleKeys.verify.tr(),
               onPressed: () {
                 if (cubit.formkey.currentState!.validate()) {
-                  cubit.forget_password();
+                  cubit.Otp();
                 }
               },
             ),

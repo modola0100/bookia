@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     var userData = SharedPref.getUserData();
     Future.delayed(Duration(seconds: 3), () {
       if (userData != null) {
-        pushReplacment(context, Routes.main);
+        pushReplacment(context, Routes.welcome);
       } else {
         pushReplacment(context, Routes.welcome);
       }

@@ -2,7 +2,7 @@ import 'package:bookia/core/constants/app_icons.dart';
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/features/cart/presentation/cart_screen.dart';
 import 'package:bookia/features/home/presentation/home_screen.dart';
-import 'package:bookia/features/profile/profile_screen.dart';
+import 'package:bookia/features/profile/presentation/profile_screen.dart';
 import 'package:bookia/features/wishlist/presentation/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +16,7 @@ class MainAppScreen extends StatefulWidget {
 }
 
 class _MainAppScreenState extends State<MainAppScreen> {
-  late int currentIndex;
+  int currentIndex = 0;
 
   @override
   void initState() {

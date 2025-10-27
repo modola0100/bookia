@@ -11,6 +11,8 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/auth/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/cubit/auth_state.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -57,26 +59,26 @@ class ForgetPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Forgot Password?", style: TextStyles.size30()),
+              Text(LocaleKeys.fogot_password.tr(), style: TextStyles.size30()),
               Gap(10),
               Text(
-                "Don't worry! It occurs. Please enter the email address linked with your account.",
+                LocaleKeys.fogot_password_msg.tr(),
                 style: TextStyles.size15(color: AppColors.graytextColor),
               ),
               Gap(30),
               customTextformfield(
                 controller: cubit.emailController,
-                hintText: "Enter your email",
+                hintText: LocaleKeys.email.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Email is Required";
+                    return LocaleKeys.email_validate.tr();
                   }
                   return null;
                 },
               ),
               Gap(40),
               customButtom(
-                txt: "Send Code",
+                txt: LocaleKeys.send_code.tr(),
                 onPressed: () {
                   if (cubit.formkey.currentState!.validate()) {
                     cubit.forget_password();

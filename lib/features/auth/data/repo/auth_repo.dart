@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bookia/features/auth/data/models/auth_params.dart';
 import 'package:bookia/features/auth/data/models/auth_response/auth_response.dart';
+import 'package:bookia/features/auth/data/models/new_password_params.dart';
 import 'package:bookia/services/dio/dio_endpoints.dart';
 import 'package:bookia/services/dio/dio_provider.dart';
 import 'package:bookia/services/local/shared_pref.dart';
@@ -37,6 +38,29 @@ class AuthRepo {
 
       if (res.statusCode == 200) {
         var body = res.data;
+      var userObj = AuthResponse.fromJson(body);
+
+      SharedPref.saveUserData(userObj.data);
+
+      return userObj;
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static Future<AuthResponse?> logout() async {
+    try {
+      var res = await DioProvider.post(
+        endPoint: DioEndpoints.logout,
+        headers: {"Authorization": "Bearer ${SharedPref.getUserData()?.token}"},
+      );
+
+      if (res.statusCode == 200) {
+        var body = res.data;
 
         return AuthResponse.fromJson(body);
       } else {
@@ -68,10 +92,30 @@ class AuthRepo {
     }
   }
 
-  static Future<AuthResponse?> verify_email(AuthParams params) async {
+  static Future<AuthResponse?> Otp(AuthParams params) async {
     try {
       var res = await DioProvider.post(
         endPoint: DioEndpoints.otp,
+        data: params.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        var body = res.data;
+
+        return AuthResponse.fromJson(body);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  static Future<AuthResponse?> reset_password(NewPasswordParams params) async {
+    try {
+      var res = await DioProvider.post(
+        endPoint: DioEndpoints.reset_password,
         data: params.toJson(),
       );
 

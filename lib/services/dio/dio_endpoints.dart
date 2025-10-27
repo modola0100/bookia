@@ -3,10 +3,13 @@
 class DioEndpoints {
   static const String baseUrl = "https://codingarabic.online/api";
 
+  //Auth
   static const String login = "/login";
   static const String register = "/register";
+  static const String logout = "/logout";
   static const String forget_password = "/forget-password";
   static const String otp = "/check-forget-password";
+  static const String reset_password = "/reset-password";
 
   //Home
   static const String products_bestseller = "/products-bestseller";
